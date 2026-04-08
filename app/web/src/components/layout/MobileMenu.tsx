@@ -41,7 +41,7 @@ export default function MobileMenu({
         aria-modal="true"
         aria-label="Mobile navigation"
         className={[
-          "fixed right-0 top-0 z-[200] flex h-full w-[min(280px,85vw)] flex-col bg-[#2b2d42] px-6 py-6 shadow-[-4px_0_24px_rgba(0,0,0,0.4)] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
+          "fixed right-0 top-0 z-[200] flex h-full w-[min(280px,85vw)] flex-col bg-dark-charcoal px-6 py-6 shadow-[-4px_0_24px_rgba(0,0,0,0.4)] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
           isOpen ? "translate-x-0" : "translate-x-full",
         ].join(" ")}
       >
@@ -49,7 +49,7 @@ export default function MobileMenu({
         <button
           onClick={onClose}
           aria-label="Close menu"
-          className="mb-8 self-end text-[#f8f9fa] transition-colors duration-200 hover:text-[#ff4500]"
+          className="mb-8 self-end text-light-gray transition-colors duration-200 hover:text-brand-orange"
         >
           <X size={22} />
         </button>
@@ -63,10 +63,10 @@ export default function MobileMenu({
               onClick={onClose}
               className={({ isActive }) =>
                 [
-                  "border-b border-white/[0.06] py-3 font-['Montserrat'] text-lg font-semibold transition-colors duration-200",
+                  "border-b border-white/6 py-3 font-['Montserrat'] text-lg font-semibold transition-colors duration-200",
                   isActive
                     ? "text-brand-orange"
-                    : "text-[#f8f9fa] hover:text-brand-orange",
+                    : "text-light-gray hover:text-brand-orange",
                 ].join(" ")
               }
             >

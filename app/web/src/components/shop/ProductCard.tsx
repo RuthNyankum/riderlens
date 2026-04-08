@@ -2,17 +2,24 @@ import { Link } from "react-router-dom";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
 import type { Product } from "../../types/product";
+import { formatPrice } from "../../utils/formatPrice";
+import { useAppSelector } from "../../store/hooks";
+import { slugify } from "../../utils/slugify";
 
 interface ProductCardProps {
   product: Product;
+  currency: "USD" | "GHS";
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const { currency, rate } = useAppSelector((s) => s.currency);
+  const productSlug = slugify(product.name);
+
   return (
     <div className="flex flex-col overflow-hidden rounded-xl border border-border-gray bg-white shadow-sm transition-shadow duration-200 hover:shadow-md">
       {/* Image */}
       <Link
-        to={`/product/${product.id}`}
+        to={`/shop/${productSlug}`}
         className="relative block overflow-hidden bg-light-gray"
       >
         <img
@@ -34,19 +41,23 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.category}
           </span>
         )}
+
         <h3 className="font-['Montserrat'] text-[0.9375rem] font-bold leading-snug text-dark-gray">
           <Link
-            to={`/product/${product.id}`}
+            to={`/shop/${productSlug}`}
             className="transition-colors duration-200 hover:text-brand-orange"
           >
             {product.name}
           </Link>
         </h3>
+
+        {/* Price */}
         <p className="font-['Montserrat'] text-lg font-extrabold text-brand-orange">
-          ${product.price.toFixed(2)}
+          {formatPrice(product.price, currency, rate)}
         </p>
+
         <Button
-          href={`/product/${product.id}`}
+          href={`/shop/${productSlug}`}
           variant="outline"
           size="sm"
           className="mt-auto w-full"

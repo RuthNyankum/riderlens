@@ -34,7 +34,7 @@ export default function CategoryCards() {
           >
             {/* Coloured image area */}
             <div
-              className={`flex h-44 items-center justify-center bg-gradient-to-br ${bg}`}
+              className={`flex h-44 items-center justify-center bg-linear-to-br ${bg}`}
             >
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm transition-transform duration-200 group-hover:scale-110">
                 {icon}
