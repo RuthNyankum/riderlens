@@ -1,5 +1,6 @@
 import type { Product } from "../../types/product";
 import ProductCard from "../shop/ProductCard";
+import { useAppSelector } from "../../store/hooks";
 
 // import ProductCard, { type Product } from "../shop/ProductCard";
 
@@ -54,6 +55,8 @@ const featuredProducts: Product[] = [
 ];
 
 export default function FeaturedProducts() {
+  const currency = useAppSelector((s) => s.currency.currency); // get current currency
+
   return (
     <section className="bg-light-gray py-16">
       <div className="mx-auto max-w-350 px-6 md:px-10">
@@ -62,7 +65,11 @@ export default function FeaturedProducts() {
         </h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              currency={currency}
+            />
           ))}
         </div>
       </div>
